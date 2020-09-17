@@ -29,7 +29,7 @@ class Alien extends SpaceShip {
         super(name, hull, firepower, accuracy)
     }
     attack(){
-        
+        console.log(`${this.name} attacks`)
     }
 };
 
@@ -42,14 +42,10 @@ let alien4 = new Alien('Alien4', 6, 3, .7);
 let alien5 = new Alien('Alien5', 5, 3, .6);
 let alien6 = new Alien('Alien6', 4, 4, .7);
 
-// player.attack();
-// alien1.attack();
-
-//Create attack loop
+//Create alien array attack loop
     //While ships both have hulls attack
     //If ship beats alien, add prompt to attack or retreat
     //Iterate to next alien and restart attack sequence
-//Add attack or retreat prompt
 
 const alienShips = [alien1, alien2, alien3, alien4, alien5, alien6];
 
@@ -74,5 +70,23 @@ for (let i = 0; i < alienShips.length; i++){
             console.log(`${alienShips[i].name} misses.`)
         }
             console.log(player);
+        
     }
+    //Prompt to continue or end game
+    if(alienShips[i].hull <= 0){
+        let gameStatus = prompt("Would you like to attack or retreat")
+        if(gameStatus === "attack"){
+            continue
+        }  else if(gameStatus === "retreat"){
+            alert("Game over")
+        }
+    }
+    break
 }
+
+/*
+Current issues:
+1. Aliens attack after death
+2. Accuracies are not working
+3. Attack functions need major refactoring
+*/
