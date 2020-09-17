@@ -29,7 +29,7 @@ class Alien extends SpaceShip {
         super(name, hull, firepower, accuracy)
     }
     attack(){
-        console.log(`${this.name} attacks`)
+        
     }
 };
 
@@ -55,41 +55,20 @@ const alienShips = [alien1, alien2, alien3, alien4, alien5, alien6];
 
 //If player attacks and hits, alien loses hull. If player misses, alien attacks
 //If alien hits and hits, player loses hull. If alien misses, player attacks
-// for (let i = 0; i < alienShips.length; i++){
-//     if(player.hull > 0 && alienShips[0].hull > 0) {
-//         player.attack() 
-//         if(Math.random() >= player.accuracy){
-//             console.log(`${player.name} has caused ${player.firepower} damage!`)
-//             alienShips[0].hull -= player.firepower
-//         } else {
-//             console.log(`${player.name} misses.`)
-//         }
-//         console.log(alienShips[0]);
-//         alienShips[0].attack() 
-//         if(Math.random() >= alienShips[0].accuracy){
-//             console.log(`${alienShips[0].name} has caused ${alienShips[0].firepower} damage!`)
-//             player.hull -= alienShips[0].firepower
-//         } else {
-//             console.log(`${alienShips[0].name} misses.`)
-//         }
-//         console.log(player);
-//     }
-
-// }
 
 for (let i = 0; i < alienShips.length; i++){
     while (player.hull > 0 && alienShips[i].hull > 0) {
         player.attack()
         if(Math.random() >= player.accuracy){
             console.log(`${player.name} has caused ${player.firepower} damage!`)
-            alienShips[0].hull -= player.firepower
+            alienShips[i].hull -= player.firepower
         } else {
             console.log(`${player.name} misses.`)
         }
             console.log(alienShips[i]);
-            alienShips[0].attack() 
+            alienShips[i].attack() 
         if(Math.random() >= alienShips[i].accuracy){
-            console.log(`${alienShips[i].name} has caused ${alienShips[0].firepower} damage!`)
+            console.log(`${alienShips[i].name} has caused ${alienShips[i].firepower} damage!`)
             player.hull -= alienShips[i].firepower
         } else {
             console.log(`${alienShips[i].name} misses.`)
