@@ -62,13 +62,17 @@ for (let i = 0; i < alienShips.length; i++){
             console.log(`${player.name} misses.`)
         }
             console.log(alienShips[i]);
+
+        if(alienShips[i].hull > 0){
             alienShips[i].attack() 
-        if(Math.random() >= alienShips[i].accuracy){
-            console.log(`${alienShips[i].name} has caused ${alienShips[i].firepower} damage!`)
-            player.hull -= alienShips[i].firepower
-        } else {
-            console.log(`${alienShips[i].name} misses.`)
+            if(Math.random() >= alienShips[i].accuracy){
+                console.log(`${alienShips[i].name} has caused ${alienShips[i].firepower} damage!`)
+                player.hull -= alienShips[i].firepower
+            } else {
+                console.log(`${alienShips[i].name} misses.`)
+            }
         }
+
             console.log(player);
         
     }
@@ -86,7 +90,6 @@ for (let i = 0; i < alienShips.length; i++){
 
 /*
 Current issues:
-1. Aliens attack after death
-2. Accuracies are not working
-3. Attack functions need major refactoring
+1. Accuracies are not working
+2. Attack functions need major refactoring
 */
