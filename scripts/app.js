@@ -88,12 +88,12 @@ for (let i = 0; i < alienShips.length; i++) {
       break;
     }
   } else {
-    console.log('Game over')
+    console.log('Player wins!')
   }
 }
+
+
 /*
 Current issues:
-1. Accuracies are not working
-2. How to end game after all aliens defeated
-3. Attack functions need major refactoring
+1. Attack functions need major refactoring
 */
