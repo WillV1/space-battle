@@ -8,6 +8,9 @@ class SpaceShip {
     this.firepower = firepower;
     this.accuracy = accuracy;
   }
+  attack() {
+    console.log(`${this.name} attacks`);
+  }
 }
 
 /*Extend spaceship
@@ -17,10 +20,7 @@ methods for player and aliens?*/
 
 class Player extends SpaceShip {
   constructor(name, hull, firepower, accuracy) {
-    super("USS Assembly", 50, 5, 0.7);
-  }
-  attack() {
-    console.log(`${this.name} attacks`);
+    super("USS Assembly", 20, 5, 0.7);
   }
 }
 
@@ -28,8 +28,16 @@ class Alien extends SpaceShip {
   constructor(name, hull, firepower, accuracy) {
     super(name, hull, firepower, accuracy);
   }
-  attack() {
+  attack(player) {
     console.log(`${this.name} attacks`);
+    if (Math.random() >= this.accuracy) {
+      console.log(
+        `${this.name} has caused ${this.firepower} damage!`
+      );
+      player.hull -= this.firepower;
+    } else {
+      console.log(`${this.name} misses.`);
+    }
   }
 }
 
@@ -64,15 +72,8 @@ for (let i = 0; i < alienShips.length; i++) {
     //If alien still has life, it can attack
 
     if (alienShips[i].hull > 0) {
-      alienShips[i].attack();
-      if (Math.random() >= alienShips[i].accuracy) {
-        console.log(
-          `${alienShips[i].name} has caused ${alienShips[i].firepower} damage!`
-        );
-        player.hull -= alienShips[i].firepower;
-      } else {
-        console.log(`${alienShips[i].name} misses.`);
-      }
+      alienShips[i].attack(player);
+
     }
     console.log(player);
   }
@@ -91,9 +92,3 @@ for (let i = 0; i < alienShips.length; i++) {
     console.log('Player wins!')
   }
 }
-
-
-/*
-Current issues:
-1. Attack functions need major refactoring
-*/
